@@ -1,0 +1,51 @@
+In this Experiment I created a student Registration form By using HTML5
+It Student form include fields like Name , Email id , Age and Sumbit and Reset buttons
+
+Validation Used and Test Cases:
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+For Name Field:
+
+Validations used : Required & Pattern
+
+            1) Required Validation : If we left this field blank and tries to go the next field by Entering or 
+                                     submit the form It will pop up a Message Field is required to be fill.
+                         
+            2) Pattern "[A-Za-z/s]+" : It matches a pattern like It accepts only A-Z & a-z & Space 
+                                       If we Enter a numeric value it will show a message Pattern Mismatch.
+
+            Test case (if Name) :   Jagdeep           (PASS)                    
+                                    Jagdeep Singh     (PASS)
+                                    Jagdeep123        (FAIL)
+                                    Jagdeep@          (FAIL)                    
+                                      
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+For Email Field :
+ 
+Validations used : Required
+
+            1) Required Validation : If we left this field blank and tries to go the next field by Entering or 
+                                     submit the form It will pop up a Message Field is required to be fill
+
+            Test case (if email) :   12378456             (FAIL)    -> Inbuilt validation if type is email : It does not accept email without format
+                                     chtvbhj              (FAIL)
+                                     jashan223@gmail.com  (PASS)
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+For Age field :
+      
+Validation used : Required , MIN , MAX
+             
+            min & max validation -> these attributes in age field will make sure that the input value will be betweet the min and max value
+            
+            Test case (if age) :   1234          (FAIL)
+                                   0             (FAIL)
+                                   23            (PASS)
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------                                  
+Learning Outcomes:
+
+1. I Understand the Basic Structure of the HTML code.
+2. How to use INPUT tags and what TYPE of input can be taken from the user.
+3. I came to know about the different use of the Validation on the Input Types.
+4. Showcase the use of Different Validation on the Fields
+5. effectively using attributes like placeholder and title, improving accessibility and usability
