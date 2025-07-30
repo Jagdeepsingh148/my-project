@@ -1,0 +1,66 @@
+In this Experiment I created a Bank deposit and Withdraw UI by using HTML and Basic CSS.
+
+HTML :
+
+To make this I use the different Tags of HTML like div , button .
+In order to apply diffrent css to different Div a class attribute is intialised inside that Tag
+
+Basic Structure:(Experiment-2)
+
+An outer_div which hold all the content then An inner_div which holds the content like deposit 
+and withdraw buttons also withdraw amount.
+
+By this HTML skeleton is Ready now we have to apply CSS to it.
+-------------------------------------------------------------------------------------------------
+CSS :
+
+It stands for cascading style sheets which used to add design and color to the HTML code.
+
+Types:
+
+Inline css : write CSS inside the specific TAg.
+Internal CSS : A Style tag include in the HTML file which defines which style to which tag.
+External CSS : Instead of writing CSS code to the HTML file , A Separated file is created  in that folder
+                and then the path of that file is include in the HTML file by using LINK tag. 
+
+Basic Structure of CSS :
+
+Selector {                      i.e  body{
+    Property : value ;                 background-color : yellow;
+        }                                  }
+
+CSS properties used in this experiment :
+
+BOX model :
+This is basic model of css which help to identify what is padding ,margin , border and content.
+
+Padding : Space between the border and Content.
+Margin : The space between two containers.
+
+Design Flex :
+
+This is basically a Layout which help to organize the Content is Row and column .
+if Flex- direction is Row then row wise content wil display and similar for column.
+
+Responsiveness :
+
+Responsive UI basicaly a UI which adjust itself according to screen ratio .
+For this we use @media selector which have some parameter on to which the UI become Responsive.
+
+Some of the basic CSS Properties Used :
+
+background-color         // to set bg color .
+color                    // to set color of fonts.
+justify-content          // to justify the cotent .
+border                   // to edit the border of the container.
+border-radius            // to smooth the edges of the containers
+display                  // which type of layout are we using. 
+
+-------------------------------------------------------------------------------------
+Learning Outcomes :
+
+1) How to add class attribute to a tag and what the use of it.
+2) Use of flex display to make the content aligned i.e row and col according to the need.
+3) How to apply css to the classes.
+4) Understand the box model concept.
+5) How to make a Responsive UI by usign @margin .
