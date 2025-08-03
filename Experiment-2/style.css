@@ -1,17 +1,24 @@
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height :100vh;
+}
 .Outer_div {
     display: flex;
     background-color: rgb(224, 220, 220);
     border : 2px solid black;
     width : 300px ;
     height: 250px;
-     align-items: center;
+    align-items: center;
     justify-content: center;
 
 }
 
 .Inner_div {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: white;
@@ -46,16 +53,23 @@
     color:white;
 }
 
-body{
+
+.buttons{
     display: flex;
-    justify-content: center;
- 
-    align-items: center;
+    flex-direction: row;
+    gap : 7px;
 }
-   @media(max-width:480px)
-{
-    .Inner_div{
-        flex-direction :column;
+@media (max-width: 480px) {
+    .buttons{
+       flex-direction: column;
+
     }
 }
 
+@media (min-width: 481px) {
+    .Deposit, .Withdraw {
+        width: 100px;
+        height: 30px;
+        font-size: 12px;
+    }
+}

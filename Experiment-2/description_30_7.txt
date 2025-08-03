@@ -7,8 +7,7 @@ In order to apply diffrent css to different Div a class attribute is intialised 
 
 Basic Structure:(Experiment-2)
 
-An outer_div which hold all the content then An inner_div which holds the content like deposit 
-and withdraw buttons also withdraw amount.
+An outer_div which hold all the content inside it  An inner_div which holds the content like deposit and withdraw buttons also withdraw amount.
 
 By this HTML skeleton is Ready now we have to apply CSS to it.
 -------------------------------------------------------------------------------------------------
