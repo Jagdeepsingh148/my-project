@@ -1,0 +1,99 @@
+Experiment 3
+Admin Dashboard with Grid Display and Theme Switch using HTML and CSS
+
+Overview
+In this experiment, I created an Admin Dashboard using CSS Grid Layout for structure and
+a checkbox-based theme switcher for toggling between light and dark modes, all implemented using HTML and CSS—without JavaScript.
+
+HTML structure:
+
+    1. Added a hidden checkbox at the top that works as a theme  swticher between light and dark mode using only CSS.
+    2. Used a main container div with CSS Grid to split layout into header, nav, main and footer.
+    3. Header has the dashboard title and a label to click for toggling dark mode.
+    4. Navigation is a side menu with links for Home, User and Settings. 
+    5. Main area with a welcome message and text for charts or reports. 
+    6. Footer with bottom with “© 2025 Admin Panel” text.
+    7. Theme changes happen by updating CSS variables when the checkbox is checked, no Javascript used. 
+
+CSS Key Features:
+
+:root Selector and CSS Variables
+                :root is a special CSS selector that targets the root element  of the HTML document.
+                It is commonly used to define CSS custom properties (variables) for colors, font sizes, and other reusable values.
+                In this project, variables like --header-bg-color and --main-bg-color store color values,
+                making it easy to update the theme by changing the variables in one place.
+
+               Synatx for root and CSS variables :
+                                                                            
+                :root {                                           
+                       --Property: value;                       
+                } 
+          
+               Example:
+
+                :root {
+                       --header-bg-color: rgb(27, 149, 27);
+                       --footer-bg-color : rgb(27, 149, 27);
+                       --nav-bg-color :rgb(222, 218, 218);
+                       --main-bg-color : white;
+                }
+
+
+input:checked ~ .container
+
+                This uses a CSS state selector (:checked) combined with the general sibling selector (~).
+                When the hidden checkbox with the ID theme is checked, it changes the CSS variables to apply a dark theme.
+                Since .container comes after the <input> in the HTML structure, this relationship allows us to switch themes without using JavaScript.
+
+            Synatx:
+
+                input:checked~.container{
+                         --Property: Value;
+                }
+   
+            Example :
+                input:checked~.container{
+                    --header-bg-color: rgb(30, 31, 30);
+                    --footer-bg-color : rgb(33, 35, 33);
+                    --nav-bg-color :rgb(56, 53, 53);
+                }
+
+Layout Grid : 
+            It is layout which provide more freedom in terms of row and columns.
+
+            CSS : Display : grid;
+
+Grid Layout – Columns
+
+               grid-template-columns defines two columns:
+               
+               Synatx:    
+               grid-template-columns: 150px 1fr;
+
+               First column: fixed width (150px) for the sidebar.
+               Second column: auto-adjust to take the remaining space for the main content.
+
+               
+
+Grid Layout – Rows
+
+               grid-template-rows defines rows:
+               
+               Synatx:
+               grid-template-columns: 50px auto 50px;
+
+               Row 1: 50px height (header)
+               Row 2: auto (main content area)
+               Row 3: 50px height (footer)
+
+              
+
+Learning Outcomes:
+
+1. Ability to understand and use CSS variables for maintainable styling.
+2. Correct and effective usage of the :root selector.
+3. Implementation of theme switching using CSS .
+4. Designing layouts using CSS Grid Display for clear structure.
+5. Knowledge of CSS sibling selectors and how they interact with element states.
+6. Applying responsive design principles for modern web interfaces.
+
