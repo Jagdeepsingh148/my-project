@@ -1,0 +1,79 @@
+Experiment-4
+Live Character Counter using HTML, CSS and JavaScript
+
+## Overview  
+In this experiment i created a **Live Character Counter**.  
+The main goal was that as soon as i type in a textbox (textarea), the number of characters should be shown below it.   
+
+------------------------------------------------------------------------------- 
+
+## HTML Structure  
+
+- <!DOCTYPE html> → defines the document type and version of html (HTML5 here).  
+- <html lang="en"> → starting of html page with english language.  
+- <head> → contains meta info, title etc.  
+- <body> → this is the main visible part.  
+
+Inside body tag :
+
+1. A **main outer div** called `outer_div` to hold everything inside one box.  
+2. A <h2> heading with text "Live Character Count".  
+3. A <textarea> where user can type text. This textarea has an id="inputarea" and oninput="showcount()" event.  
+    `id` is a unique name for an element so we can find it later in css or js.
+    oninput` means whenever user types or deletes something, the function is called.  
+4. A <span id="Counter">0</span> which shows the live count of characters.  
+
+So the structure is simple:  
+
+**Outer div → Heading → Textarea → Counter Display**
+--------------------------------------------------------------------------------------------------
+
+JavaScript Logic :  
+
+The Function 
+
+I made a function named **showcount()**. It runs every time user types something in textarea.  
+
+javascript
+
+function showcount() {
+    const textarea = document.getElementById("inputarea");
+    const count = textarea.value.length;
+
+    const counter = document.getElementById("Counter");
+    counter.textContent = count;
+}
+ 
+In this function getElementById is used to refference the tag to some const or variable .
+
+"Value" is used to access the message inside the text area .
+
+"Length " is used to count the number of character inside the text area.
+
+
+
+-------------------------------------------------------------------------------------------------
+
+Basic CSS : 
+
+-  use of basic css properties like 
+   - height                                  Set the height  of outer and textbox .
+   - width                                   Set the width
+   - border                                  Create a border around the div
+   - border-radius                           To curve the egde of the border.
+   - display : flex                          To display the content is row and column.
+   - text-align                              To align the text.
+
+--------------------------------------------------------------------------------------------------
+
+Learning outcomes: 
+
+1. Got familiar with HTML structure (head, body, div, textarea, span).
+
+2. Understood how to use the id attribute to target elements.
+
+3. Learned about oninput event for live updates.
+
+4. Explored JavaScript DOM methods, specially getElementById.
+
+5. Learned about .value and .length properties of textarea.
