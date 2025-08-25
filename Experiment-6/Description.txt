@@ -1,0 +1,103 @@
+Experiment-6
+SVG Drawing Tool using HTML,CSS and JavaScript function like mouse events.
+--------------------------------------------------------------------------------------------------------------------
+JavaScript
+
+const svg = document.getElementById("drawing-area");
+Selects the <svg> element with the id drawing-area.
+This is the main canvas where drawing will happen.
+
+let drawing = false;
+A flag (boolean variable) used to check if the user is currently drawing.
+Initially set to false, meaning no drawing action is happening.
+
+let currentPath = null;
+Stores the current line/path being drawn.
+Will change dynamically when the mouse is pressed.
+
+FUNCTION : +++++++++++++++++++++++++++++++++++++++
+
+svg.addEventListener("mousedown", (e) => { ... })
+Triggered when the mouse button is pressed inside the SVG area.
+
+Steps inside:
+
+drawing = true;                                                                        -> Drawing mode activated.
+currentPath = document.createElementNS("http://www.w3.org/2000/svg", "path");          -> Creates a new SVG <path> element 
+                                                                                          (special syntax because SVG needs a namespace).
+currentPath.setAttribute("stroke", "blue");                                            -> Sets line color to blue.
+currentPath.setAttribute("stroke-width", "2");                                         -> Line thickness = 2px.
+currentPath.setAttribute("fill", "none");                                              -> Ensures no shape gets filled, only outline.
+currentPath.setAttribute("d", \M${e.offsetX},${e.offsetY}`);`                          -> Defines the path’s starting point 
+                                                                                          (M means "move to" this coordinate).
+svg.appendChild(currentPath);                                                          -> Adds the path into the SVG so it becomes visible.
+
+FUNCTION : ++++++++++++++++++++++++++++++++++++++++++++++
+
+svg.addEventListener("mousemove", (e) => { ... })
+Triggered when the mouse moves inside SVG.
+
+Works only when drawing = true.
+
+Steps inside:
+
+const d = currentPath.getAttribute("d");                                 -> Gets the existing drawing instructions.
+currentPath.setAttribute("d", \${d} L${e.offsetX},${e.offsetY}`);`       -> Appends a new line (L) from the last point to the new mouse position.
+                                                                            This creates continuous freehand drawing.
+                                                                   
+FUNCTION :   +++++++++++++++++++++++++++++++++++++++++++
+
+svg.addEventListener("mouseup", () => { ... })                          
+Triggered when mouse button is released.
+
+Steps inside:
+
+drawing = false;                                                         -> Turns off drawing mode.
+currentPath = null;                                                      -> Ends the current line. 
+
+FUNCTION : ++++++++++++++++++++++++++++++++++++++++++++++
+
+svg.addEventListener("mouseleave", () => { ... })                        
+Triggered when the mouse leaves the SVG area.
+
+Works same as mouseup:
+Stops drawing (drawing = false).
+
+Resets currentPath.
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+HTML
+<svg id="drawing-area" width="500" height="300"></svg>              The SVG box where user can draw.
+
+Width = 500px, Height = 300px.                                       Acts like a canvas but uses vector graphics instead of pixels.
+
+<div class="container">...</div>                                     Wraps the heading and drawing area. Helps organize content with styling.
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+CSS
+
+body { font-family: Arial, sans-serif; margin: 20px; }               
+                Sets font for text.
+                Adds margin for spacing around the page.
+
+.container { border: 2px solid #000; padding: 15px; width: fit-content; }   
+                Black border box around the SVG tool.
+                Padding makes inner spacing.
+                fit-content makes box size only as large as needed.
+
+h2 { margin-top: 0; }
+                Removes default top margin of heading to keep it close to the box.
+
+#drawing-area { border: 2px solid #000; background-color: #fff; cursor: crosshair; }
+                Black border for the SVG area.
+                White background (like paper).
+                Cursor changes to a crosshair (helpful for precision drawing).
+-------------------------------------------------------------------------------------------------------------------------------------------------
+learning outcomes :
+
+1.Understand how SVG uses mathematical coordinates to draw lines and shapes.
+2.Learn how paths (<path>) store movement instructions (like M for move, L for line).
+3.Explore how event listeners (e.g., mousedown, mousemove, mouseup) can be used to create drawing logic.
+4.Recognize that SVG is resolution-independent, making it better than raster images for graphics.
+5.Apply SVG in interactive applications such as drawing tools, graphs, or animations.

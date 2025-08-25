@@ -1,0 +1,75 @@
+Dynamic Product Filter
+
+A web based dropdown that allows users to filter products based on categories (like Electronics, Clothing, etc.). 
+Updates the product list instantly without reloading the page.
+------------------------------------------------------------------------------------------------------------------------
+JavaScript logic :
+
+const products = […]
+Stores all the product data as an array of objects.
+Each object has name and category. Example: { name: "Shirt", category: "Clothing" }.
+This acts as the main dataset that filtering will be applied to.
+
+function displayProducts(filteredProducts)
+Takes the filtered product list as input.
+Clears any existing items in the product list area.
+Loops through filteredProducts and dynamically creates list elements to display them.
+
+document.getElementById("filter")
+Selects the <select> dropdown element from the HTML.
+Helps JavaScript detect which filter option is currently chosen.
+
+filter.addEventListener("change", … )
+Listens for a change event when the user picks a category.
+Triggers the filtering process immediately without refreshing the page.
+Ensures the displayed products match the selected option.
+
+const filteredProducts = products.filter(…)
+Uses the .filter() method to create a new array of matching products.
+If "Clothing" is selected, only products where category === "Clothing" are kept.
+If "All" is chosen, no filtering is applied, and the full list is shown.
+
+productList.appendChild(li)
+Appends each matching product (as a <li> element) into the product list.
+This step visually updates the page with the new filtered results.
+----------------------------------------------------------------------------------------------------------------
+HTML 
+
+<select id="filter">
+A dropdown menu that lets users choose the product category.
+Categories include "All", "Electronics", "Clothing", etc.
+Acts as the input control for filtering.
+
+<ul id="productList">
+An unordered list where filtered products are displayed.
+Each matching product is inserted as a <li> inside this list.
+
+<option value="all">
+A special option that resets the filter.
+Displays all products regardless of category.
+
+<div class="container">
+Groups the dropdown and the product list into a single box.
+Makes the layout look clean and organized.
+---------------------------------------------------------------------------------------------------------------------
+CSS
+
+.container
+Adds padding, border, and background to create a neat section.
+Makes the filter UI stand out from the rest of the page.
+
+select
+Styles the dropdown with padding and border.
+Ensures it looks clickable and user-friendly.
+
+ul li
+Each product is displayed in a list format.
+Provides spacing and clean typography for readability.
+-------------------------------------------------------------------------------------------------------------------------
+Learning Outcomes
+
+1.Learned to manage datasets in JavaScript using arrays of objects.
+2.Practiced event-driven programming with change events.
+3.Understood how to use filter() to create dynamic subsets of data.
+4.Gained experience with DOM manipulation by creating and inserting elements dynamically.
+5.Built a feature where users can instantly control displayed content without refreshing the page.
