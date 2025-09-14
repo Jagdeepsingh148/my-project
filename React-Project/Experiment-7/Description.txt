@@ -1,0 +1,118 @@
+EXPERIMENT - 7 (PRODUCT-LIST)
+ 
+To create a Product Listing UI using React components where each product is represented as 
+a card with name, price, and stock status. The goal is to understand props, conditional 
+rendering, and component reusability in React.
+
+Theory
+------
+React is a component-based JavaScript library used for building interactive UIs. 
+The key concepts used in this experiment are:
+
+Components – Reusable building blocks (SearchBar, AddBookForm, BookList).
+Props – Passing data between parent and child components.
+State (useState) – Storing and updating dynamic data like books, search text.
+Events – Handling button clicks and input changes.
+
+File Hierarchy
+--------------
+Experiment-7/
+├── index.html  
+├── src/
+│   ├── App.jsx
+│   ├── App.css
+│   ├── index.css
+│   ├── main.jsx
+│   └── ProductCard.jsx
+├── Descrition.txt
+└── package.json
+
+Description of Files :
+-------------------
+index.html → Entry point with <div id="root"></div>.
+main.jsx → Uses createRoot to render <App /> inside #root.
+App.jsx → Parent component, defines product list and renders multiple <ProductCard /> components.
+ProductCard.jsx → Child component, receives product details via props and renders them.
+App.css / index.css → Styling for body, product card, and cart layout.
+
+Functionality :
+-------------
+1. Product Display
+   - Each product is displayed inside a card layout.
+   - Props include:
+      - name → Product name.
+      - price → Product price.
+      - status → Availability status (Available / Out of Stock).
+
+   Example:
+      <ProductCard product={{ name: "IPhone 17", price: 990, status: "Available" }} />
+
+2. Conditional Rendering (Stock Status)
+   - If a product is out of stock:
+   - Background changes (.out-of-stock class).
+       - Status text turns red.
+   - If available:
+       - Status text turns green.
+
+    Example:
+      "Monitor" → Out of Stock (red + gray background)
+      "IPhone 17" → Available (green text)
+
+3. Reusable ProductCard Component
+   - ProductCard is written once but reused multiple times.
+   - Each card is passed different product data via props.
+
+    Benefit: Adding 100 products only requires reusing <ProductCard />.
+
+4. Flexbox Layout for Product Rows 
+   - Products are grouped in rows (.cart class).
+   - Each row uses flexbox for alignment and spacing.
+
+   Creates a grid-like catalog of products.
+
+CSS Functionality :
+-------------------
+1) .outer-div → Main container, centered with border & padding.
+2) #product-card → Individual card design (border, radius, fixed width/height).
+3) .cart → Horizontal flex layout for product rows.
+4) .status-green → Green text for Available products.
+5) .status-red → Red text for Out of Stock products.
+6) .out-of-stock → Gray background for unavailable items.
+
+Demonstration Use Case :
+----------------------
+A shopping website product list.
+
+Customer sees:
+  - Available Products → Can be bought.
+  - Out of Stock Products → Disabled / shown in gray.
+
+Example Output:
+
+Wireless Mouse – Available (Green)
+Monitor – Out of Stock (Red + Gray)
+MacBook Pro – Available (Green)
+
+Tech Stack:
+----------
+1.React (Vite) → Component-based UI.
+2.JavaScript (ES6) → Logic, props, and conditional rendering.
+3.CSS (Flexbox + custom classes) → Layout and styling.
+4.HTML (via JSX) → Rendered inside React components.
+
+Key Concepts Showcased :
+-----------------------
+Props → Passing product details into ProductCard.
+Conditional Rendering → Styling changes based on stock status.
+Reusability → One ProductCard component for multiple products.
+Flexbox Layout → Organizing product rows.
+Separation of Concerns → App.jsx handles list, ProductCard.jsx handles UI for each item.
+
+Learning Outcomes :
+------------------
+- Learned how to pass data using props in React.
+- Built and reused a single ProductCard component for multiple items.
+- Applied conditional rendering for stock availability.
+- Practiced CSS Flexbox for product layout.
+- Understood separation of concerns between logic and UI.
+- Explored a real-world e-commerce use case.
