@@ -47,7 +47,6 @@ Code Workflow
 
 Learning Outcomes
 -----------------
-. After completing this experiment, you will be able to:
 . Build CLI-based applications using Node.js.
 . Handle user input interactively with the readline module.
 . Implement basic CRUD operations with arrays.
