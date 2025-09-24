@@ -1,0 +1,97 @@
+Experiment: Concurrent Ticket Booking System with Seat Locking and Confirmation
+
+Objective:
+The objective of this experiment is to implement a ticket booking system in Node.js and Express.js 
+that safely handles concurrent seat reservation requests. The system prevents race conditions using a 
+seat locking mechanism where seats can be temporarily locked, confirmed, or released after a timeout. 
+This ensures fairness and reliability during the booking process.
+
+Task Description
+----------------
+In this we will create a REST API that simulates booking seats for an event or movie theater.
+
+The system should support:
+--------------------------
+1. Viewing all seats with their status (available, locked, booked).
+2. Locking a seat temporarily for a user (cannot be locked/booked by others until confirmed or lock expires).
+3. Confirming booking if the seat is locked by the same user.
+4. Auto-expiry of locks (e.g., after 1 minute, seat becomes available again).
+5. Concurrent request handling to prevent double-booking.
+6. The data will be stored in an in-memory data structure for simplicity.
+ 
+Implementation Details:
+---------------------
+Technologies Used
+
+Node.js – Backend runtime environment.
+Express.js – Web framework for building REST APIs.
+JavaScript (ES6) – Programming language.
+Postman – Tool for testing APIs and simulating concurrent requests.
+
+Core Features
+--------------
+1. In-Memory Seat Management – Seats are stored in an object with status, lockOwner, and lockExpiry.
+2. Locking Mechanism – Once locked, a seat cannot be booked/locked again until confirmation or expiry.
+3. concurrency Handling – Simultaneous requests are resolved so that only one succeeds in locking/booking.
+4. Custom Server Messages – Each request responds with a rotating welcome message for better UX.
+
+File Hierarchy
+-------------
+Experiment-12/
+│── server.js                # Entry point (Express app, routes, middleware)
+│── package.json             # Project dependencies and scripts
+├── routes                   # API endpoints for seats (view, lock, confirm)
+├── controllers              # Business logic for seat operations
+├── models                   # In-memory seat storage (status, lockOwner, lockExpiry)
+└──lockManager.js            # Utility for checking and expiring seat locks
+
+API Endpoints
+-------------
+1. View All Seats
+----------------
+GET /seats
+Response: List of all seats with status (available, locked, booked).
+
+2. Lock a Seat
+--------------
+POST /seats/lock
+Body:
+{
+  "seatId": "2",
+  "userId": "user123"
+}
+Locks the seat for the user (expires after 1 minute).
+
+3. Confirm Booking
+----------------
+POST /seats/confirm
+Body:
+{
+  "seatId": "2",
+  "userId": "user123"
+}
+Confirms the booking if seat is locked by the same user.
+
+Testing with Postman
+---------------------
+Step 1:
+GET /seats → Check all seats are available.
+
+Step 2:
+POST /seats/lock with { "seatId": "2", "userId": "user123" } → Seat locked.
+
+Step 3:
+POST /seats/confirm with same user → Seat booked.
+
+Step 4:
+Another user tries locking Seat 2 → Error "Seat already locked or booked".
+
+Step 5:
+Wait 1 minute → Lock expires → Seat becomes available again.
+
+Learning Outcomes
+-----------------
+. Understand how to design concurrent systems that prevent race conditions.
+. Learn how to manage in-memory state effectively in Node.js.
+. Implement locking mechanisms with automatic expiry.
+. Structure a Node.js project using MVC pattern (models, controllers, routes, utils).

@@ -1,0 +1,54 @@
+Experiment: CLI Employee Management System Using Node.js
+
+Objective:
+The objective of this experiment is to design a Command Line Interface (CLI) application in Node.js that allows users to add, view, and remove employees interactively. This system helps in understanding user input handling, array data structures, and interactive console applications using Node.js.
+
+Task Description
+----------------
+. The system provides a text-based menu where users can:
+. Add Employee → Enter employee details and store them in memory.
+. List Employees → Display all employees currently stored.
+. Remove Employee → Delete an employee by their ID.
+. Exit → Close the application.
+
+Employees are stored in an in-memory array, making this a lightweight and simple simulation of employee management.
+
+Implementation Details
+---------------------
+
+Technologies Used
+-----------------
+. Node.js – JavaScript runtime environment.
+. readline module – For handling user input in the terminal.
+. JavaScript (ES6) – For structuring the application logic.
+
+Core Features
+-------------
+. Interactive Menu – Users select options via numeric input.
+. Employee CRUD Operations – Add, list, and remove employees dynamically.
+. In-Memory Storage – Employees stored in an array (no external database).
+. Graceful Exit – Closes the program with a goodbye message.
+
+File Structure
+--------------
+Experiment-10/
+│── employee.js        # Main file containing the CLI logic
+│── package.json       # Project dependencies (optional for npm setup)
+│── Screenshots\
+
+Code Workflow
+--------------
+. showMenu() – Displays the options menu and takes user choice.
+. addEmployee() – Adds an employee with name and id.
+. listEmployees() – Displays the list of all employees.
+. removeEmployee() – Removes employee by id.
+. exitProgram() – Ends the program gracefully.
+
+
+Learning Outcomes
+-----------------
+. After completing this experiment, you will be able to:
+. Build CLI-based applications using Node.js.
+. Handle user input interactively with the readline module.
+. Implement basic CRUD operations with arrays.
+. Understand the flow of menus and options in a text-based system.

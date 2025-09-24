@@ -1,0 +1,75 @@
+Objective:
+-----------
+The goal of this project is to build a RESTful API to manage a collection of playing cards. It demonstrates Express.js routing, modular architecture (MVC pattern), and CRUD operations in Node.js.
+
+Technologies Used
+-----------------
+Node.js – Backend runtime environment.
+Express.js – Web framework for building REST APIs.
+JavaScript (ES6) – Programming language.
+Postman – Tool for testing APIs and simulating concurrent requests.
+
+File Hierarchy :
+----------------
+Experiment-11
+│── server.js        # Main entry point
+│── model.js         # Card data (in-memory)
+│── controller.js    # Business logic
+│── routes.js        # Routes for API
+│── package.json     # Dependencies (Express)
+
+Description of Each File
+-----------------------
+1. Model (model.js)
+-------------------
+Holds the in-memory data (playing cards collection).
+
+. A simple array cards acts as the database.
+. Each card has id, suit, and value.
+. Exported so that controllers can access and modify it.
+
+-----------------------------
+2. Controller (controller.js)
+-----------------------------
+Contains business logic for handling requests
+
+Explanation:
+
+. getAllCards → returns the full deck.
+. getCardById → searches card by ID.
+. addCard → adds a new card (validates input).
+. deleteCard → removes a card by ID.
+
+---------------------
+3. Routes (routes.js)
+---------------------
+Defines REST API endpoints.
+
+Explanation:
+
+. GET /cards → list all cards.
+. GET /cards/:id → get a specific card.
+. POST /cards → add a card.
+. DELETE /cards/:id → delete a card.
+
+--------------------
+4. Server (server.js)
+---------------------
+Main entry point for running the API.
+
+Explanation:
+
+. Sets up Express app.
+. Uses JSON middleware for parsing requests.
+. Mounts all card-related routes under /cards.
+. Root (/) route shows a welcome message.
+. Runs server on http://localhost:3000.
+
+Learning Outcomes
+-----------------
+. By implementing this API, you will:
+. Understand the MVC structure in Node.js applications.
+. Learn how to define and use routes, controllers, and models separately.
+. Perform CRUD operations (Create, Read, Delete) using Express.js.
+. Gain hands-on practice with REST API development.
+. Be able to test APIs in Postman or browser.
