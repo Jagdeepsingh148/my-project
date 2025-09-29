@@ -67,7 +67,6 @@ Explanation:
 
 Learning Outcomes
 -----------------
-. By implementing this API, you will:
 . Understand the MVC structure in Node.js applications.
 . Learn how to define and use routes, controllers, and models separately.
 . Perform CRUD operations (Create, Read, Delete) using Express.js.
