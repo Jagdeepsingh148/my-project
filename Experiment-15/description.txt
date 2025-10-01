@@ -1,0 +1,100 @@
+Student Management API – Experiment 15
+
+This project is a simple CRUD API built using Node.js, Express, and Mongoose for managing student details in MongoDB.
+Instead of age, every student record contains a unique student ID (uid), along with name and course.
+
+Features : 
+
+- Create a new student record
+- Retrieve all student records
+- Update an existing student record
+- Delete a student record
+
+Technologies Used
+--------------------
+- Node.js (JavaScript runtime)
+- Express (server framework)
+- Mongoose (MongoDB ODM)
+- MongoDB (database)
+- Postman (API testing tool)
+
+Project Structure
+-------------------
+Experiment-15/
+│
+├── app.js               # Main entry file
+├── studentModel.js      # Mongoose schema/model
+├── studentController.js # Controller with CRUD logic
+├── studentRoutes.js     # Express routes
+└── description.txt            # Project documentation
+
+API Endpoints
+------------- 
+Base URL:  http://localhost:3000/api
+
+1. Create Student (POST)
+ 
+   URL: /students
+   Method: POST
+   Body (JSON):
+ 
+{
+  "name": "Jagdeep Singh",
+  "uid": "S12345",
+  "course": "CSE"
+}
+
+2. Get All Students (GET)
+
+   URL: /students
+   Method: GET
+   Response:
+
+[
+  {
+    "_id": "651234abcd5678",
+    "name": "Jagdeep Singh",
+    "uid": "S12345",
+    "course": "CSE",
+    "__v": 0
+  }
+]
+
+3.Update Student (PUT)
+
+  URL: /students/:id
+  Method: PUT
+  Body (JSON):
+
+{
+  "name": "Jagdeep Updated",
+  "uid": "S54321",
+  "course": "AI/ML"
+}
+
+4.Delete Student (DELETE)
+
+  URL: /students/:id
+  Method: DELETE
+  Response:
+
+{ "message": "Student deleted" }
+
+Testing with Postman
+--------------------
+Run the server:  node app.js
+
+Open Postman.
+-------------
+- Use the endpoints above to create, read, update, and delete student data.
+- Verify changes in MongoDB Compass at:
+- mongodb://127.0.0.1:27017/experiment15
+
+Learning Outcomes
+------------------
+- Understand how to set up a Node.js project with Express.
+- Learn how to design and use the MVC (Model–View–Controller) structure in backend applications.
+- Gain hands-on experience with Mongoose for defining schemas and interacting with MongoDB.
+- Implement CRUD operations (Create, Read, Update, Delete) for a real-world dataset.
+- Test REST APIs using Postman and verify database entries in MongoDB Compass.
+- Develop skills to connect frontend or external applications with a RESTful backend serv
