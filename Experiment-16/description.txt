@@ -1,0 +1,143 @@
+Middleware and JWT Authentication in Express.js
+===============================================
+Overview
+
+The project combines two core concepts:
+
+Middleware Implementation
+
+- Global logging middleware records the HTTP method, URL, and timestamp of every incoming request.
+- Bearer token middleware validates the presence of a valid token (mysecrettoken) for protected routes.
+
+JWT Authentication for Banking API
+
+- Implements login, balance, deposit, and withdrawal routes.
+- Uses JSON Web Tokens (JWT) for user authentication.
+- Only authenticated users can access banking routes.
+
+Technologies Used
+=================
+- Node.js (Runtime environment)
+- Express.js (Web framework)
+- jsonwebtoken (JWT) (For secure authentication)
+- Postman (For API testing)
+
+Folder Structure
+================
+Experiment-16/
+│
+├── app.js                     # Main server entry file
+│
+├── middleware/
+│   ├── logger.js              # Logs method, URL, and timestamp
+│   └── verifyJWT.js           # Verifies JWT token from headers
+│
+├── models/
+│   └── accountModel.js        # Simulates account balance operations
+│
+├── routes/
+│   ├── publicRoutes.js        # Public route accessible without authentication
+│   └── bankingRoutes.js       # JWT-secured banking endpoints
+│
+└── package.json
+
+API Endpoints
+=============
+Public Route
+
+Method	 ||   Endpoint	    ||              Description
+GET	     ||    /public	    ||   Accessible to everyone without authentication
+
+Authentication Routes
+
+Method	 ||   Endpoint	         ||                   Description
+POST	   ||  /banking/login	     || Logs in using username and password, returns a JWT token
+
+Valid Credentials:
+
+{
+  "username": "jagdeepsingh",
+  "password": "23BAI70099"
+}
+
+Banking Routes (Protected)
+
+  Method	  ||      Endpoint	          ||          Description
+   GET	    ||     /banking/balance	    ||    View account balance
+   POST	    ||     /banking/deposit	    ||    Deposit an amount
+   POST	    ||     /banking/withdraw	  ||      Withdraw an amount
+
+   
+How to Run the Project
+=====================
+Install dependencies
+   - npm install express jsonwebtoken
+
+Start the server
+   - node app.js
+
+Server runs on
+   - http://localhost:3000
+
+
+Testing the API in Postman
+==========================
+
+Login (POST)
+
+URL:  http://localhost:3000/banking/login
+
+
+Body (JSON):
+
+{
+  "username": "jagdeepsingh",
+  "password": "23BAI70099"
+}
+
+
+Response Example:
+
+{
+  "message": "Login successful",
+  "token": "<your_generated_jwt>"
+}
+
+Access Protected Routes
+=======================
+
+Add the token to Headers:
+
+Authorization: Bearer <your_generated_jwt>
+Then test these routes:
+
+Check Balance
+GET http://localhost:3000/banking/balance
+
+Deposit Money
+POST http://localhost:3000/banking/deposit
+Body: { "amount": 5000 }
+
+Withdraw Money
+POST http://localhost:3000/banking/withdraw
+Body: { "amount": 2000 }
+
+Middleware Details
+==================
+
+Logger Middleware (logger.js)
+
+- Method: GET | URL: /banking/balance | Time: 2025-10-09T12:00:00Z
+
+JWT Verification Middleware (verifyJWT.js)
+
+- Checks for valid JWT in the Authorization header.
+- If missing or invalid, it sends a 403 or 401 error message.
+
+Learning Outcomes:
+==================
+- Understand Express.js middleware architecture.
+- Implement token-based authentication using JWT.
+- Apply global and route-specific middleware effectively.
+- Secure sensitive API endpoints.
+- Test RESTful APIs using Postman.
