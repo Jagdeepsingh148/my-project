@@ -1,0 +1,78 @@
+Experiment 18 – Role-Based Access Control with Admin, User, and Moderator Roles
+
+Overview:
+=========
+This project demonstrates the implementation of Role-Based Access Control (RBAC) in a Node.js and Express.js backend application.
+It allows for secure access to different routes and actions based on user roles, such as Admin, Moderator, and User.
+
+The system uses JWT-based authentication to verify users and store role information, ensuring that only authorized users can access specific routes.
+This experiment provides practical experience with backend security, middleware design, and protected API routes.
+
+Key Features:
+============
+- User Authentication: Users can log in and receive a JWT token containing their role.
+- Role-Based Authorization: Middleware ensures routes are only accessible to users with the required roles.
+- Protected Routes: 
+    - Admin-only dashboard     
+    - Moderator management route     
+    - User profile route
+- Error Handling: Requests with invalid tokens or insufficient roles return clear error messages.
+- Scalable Design: Easy to add new roles or modify access permissions.
+
+Technologies Used:
+==================
+
+- Node.js – Server-side runtime environment.
+- Express.js – Handles routing and API endpoints.
+- JSON Web Token (JWT) – For authentication and role management.
+- Body-Parser – To parse incoming JSON request bodies.
+
+Middleware & Security:
+=====================
+Custom middleware for JWT verification and role checking.
+
+Folder Structure:
+Experiment-18/
+│
+├── Backend/
+│   ├── index.js                # Entry point, server setup
+│   ├── routes/
+│   │   ├── auth.js             # Login route
+│   │   ├── admin.js            # Admin-only routes
+│   │   ├── moderator.js        # Moderator routes
+│   │   └── user.js             # User routes
+│   ├── middleware/
+│   │   └── auth.js             # JWT verification & role-checking
+│   ├── models/
+│   │   └── users.js            # Sample user data
+│   ├── package.json
+│   └── node_modules/
+│
+└── description.txt
+
+Steps to Run the Project:
+========================
+
+Open terminal and navigate to the folder:-------- cd Experiment-18
+
+Install dependencies:-----------npm install
+
+Start the server:----------node index.js
+
+
+The server will run at: http://localhost:3000
+
+Testing the Routes:
+==================
+= Login: POST /auth/login with username and password.
+= Admin Dashboard: GET /admin/dashboard – Admin only.
+= Moderator Route: GET /moderator/manage – Moderator only.
+= User Profile: GET /user/profile – Accessible to all authenticated users.
+= Include the JWT token in the Authorization header for protected routes.
+
+Learning Outcomes:
+=================
+- Understand how to create a secure backend API with Node.js and Express.js.
+- Learn to authenticate users using JWT and store role information.
+- Implement middleware for role-based authorization to restrict access to routes.
+- Learn to handle errors gracefully for unauthorized access or invalid tokens.
