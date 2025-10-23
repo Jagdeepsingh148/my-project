@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Person Class Hierarchy</title>
+  <style>
+body {
+   font-family: Arial, sans-serif;
+   background: #f4f4f9;
+   padding: 20px;
+   color: #333;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+}
+
+h1 {
+   text-align: center;
+   color: #444;
+}
+
+.card {
+   background: #fff;
+   padding: 15px;
+   margin: 15px 0;
+   border-radius: 8px;
+   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+}
+
+.card h2 {
+   margin-bottom: 8px;
+   color: #222;
+}
+
+.btn {
+   display: inline-block;
+   margin-top: 10px;
+   padding: 8px 12px;
+   background: #0077cc;
+   color: #fff;
+   border: none;
+   border-radius: 6px;
+   cursor: pointer;
+   transition: background 0.3s;
+}
+
+.btn:hover {
+   background: #005fa3;
+}
+  </style>
+</head>
+<body>
+  <h1>Person, Student & Teacher (Inheritance Demo)</h1>
+
+  <div id="output"></div>
+
+  <script>
+    class Person {
+      constructor(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+
+      displayInfo() {
+        return `Name: ${this.name}, Age: ${this.age}`;
+      }
+    }
+
+    class Student extends Person {
+      constructor(name, age, grade) {
+        super(name, age); 
+        this.grade = grade;
+      }
+
+      displayInfo() {
+        return `${super.displayInfo()}, Grade: ${this.grade}`;
+      }
+    }
+
+    class Teacher extends Person {
+      constructor(name, age, subject) {
+        super(name, age);
+        this.subject = subject;
+      }
+
+      displayInfo() {
+        return `${super.displayInfo()}, Subject: ${this.subject}`;
+      }
+    }
+
+    
+    const student1 = new Student("Aman", 20, "B+");
+    const teacher1 = new Teacher("Mr. Sharma", 40, "Mathematics");
+
+    const outputDiv = document.getElementById("output");
+
+    function showDetails(obj, title) {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <h2>${title}</h2>
+        <p>${obj.displayInfo()}</p>
+        <button class="btn" onclick="alert('${obj.displayInfo()}')">Show Alert</button>
+      `;
+      outputDiv.appendChild(card);
+    }
+
+    showDetails(student1, "Student Details");
+    showDetails(teacher1, "Teacher Details");
+  </script>
+</body>
+</html>

@@ -13,18 +13,16 @@ const io = new Server(httpServer, {
 app.use(cors());
 app.use(express.json());
 
-// Products API
 app.get("/api/products", (req, res) => {
   const data = fs.readFileSync("./products.json");
   res.json(JSON.parse(data));
 });
 
-// Real-time chat using Socket.io
 io.on("connection", (socket) => {
   console.log("User connected:", socket.id);
 
   socket.on("send_message", (data) => {
-    io.emit("receive_message", data); // Broadcast to all users
+    io.emit("receive_message", data); 
   });
 
   socket.on("disconnect", () => {
