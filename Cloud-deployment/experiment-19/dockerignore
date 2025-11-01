@@ -3,5 +3,5 @@ build
 .git
 .gitignore
 Dockerfile
-Dockerfile.dev
 .dockerignore
+README.md

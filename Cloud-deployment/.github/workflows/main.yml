@@ -1,0 +1,37 @@
+name: CI/CD Pipeline - React + Docker
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        working-directory: ./my-react-app
+        run: npm install
+
+      - name: Run tests
+        working-directory: ./my-react-app
+        run: npm test -- --watchAll=false
+
+      - name: Build React app
+        working-directory: ./my-react-app
+        run: npm run build
+
+      - name: Build Docker image
+        working-directory: ./my-react-app
+        run: docker build -t react-app-cloud .
+
+      - name: Run container test
+        run: docker run -d -p 80:80 react-app-cloud

@@ -1,28 +1,22 @@
-import React from "react";
-import "./App.css";
+import logo from './logo.svg';
+import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>🚀 Welcome to My Dockerized React App!</h1>
+        <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Built with using React, Docker, and GitHub Actions.
+          Edit <code>src/App.js</code> and save to reload.
         </p>
-        <button
-          onClick={() => alert("Deployed with Automation!")}
-          style={{
-            padding: "10px 20px",
-            fontSize: "16px",
-            background: "#61dafb",
-            border: "none",
-            borderRadius: "10px",
-            cursor: "pointer",
-            color: "#282c34",
-          }}
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          Click Me 🚀
-        </button>
+          Learn React
+        </a>
       </header>
     </div>
   );
