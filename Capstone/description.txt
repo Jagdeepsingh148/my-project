@@ -1,0 +1,185 @@
+Dynamic Feature Store Dashboard
+Real-Time AI/ML Feature Store with Kafka → Redis → MongoDB → React Dashboard
+
+Project :
+=======
+The Dynamic Feature Store Dashboard is a full-stack application designed to simulate the real-time processing, storage, and visualization of machine learning features.
+This system continuously collects computed features (e.g., user engagement rates, transaction counts, refund ratios), stores them in MongoDB, and presents them on a live React.js dashboard.
+The architecture is inspired by feature stores used in production-level ML pipelines (e.g., in Netflix, Uber, or Google), where feature computation and retrieval are decoupled from ML training and prediction systems.
+
+Architecture
+============
+
+Flow:
+
+Kafka → Redis → MongoDB → Express.js API → React Frontend
+
+Layer	          Technology	                   Role
+Frontend	       React.js	               Displays real-time computed features as interactive cards
+Backend	        Node.js + Express.js	   REST API handling feature storage, retrieval, and updates
+Database	       MongoDB	               Persistent storage for features and feature history
+Message Broker     Kafka            	   Streams live updates for computed features
+Cache (optional)   Redis	               Used for fast feature lookups
+Visualization	 React + React Icons	   Visual representation of each   feature card with dynamic freshness indicators
+
+Features:
+========
+
+Frontend
+--------
+- Built with React.js
+- Responsive card-based dashboard design
+- Displays multiple features dynamically with icons, timestamps, and “Fresh/Stale” indicators
+- Auto-refreshes data every 10 seconds using Axios polling
+- Styled with modern gradients and dark theme for production-like UI
+
+Backend
+-------
+- RESTful API built using Express.js
+- CRUD operations for feature management
+- Integrated MongoDB using Mongoose ODM
+- Includes rate-limiting, logging, and authentication support (scalable structure)
+- Modular route-based structure for easy maintenance
+
+Database Layer
+--------------
+- MongoDB stores all features with timestamps
+- “featurestore” database contains collections like:
+    + features → current computed features.
+    + feature_history → archived feature versions
+    + Indexed for efficient queries and real-time reads
+
+Example Data Flow
+==================
+The backend reads or receives new computed feature values (e.g., from Kafka).
+                            |
+Each feature (like rolling_avg_amount or txn_count_7d) is stored in MongoDB.
+                            |
+The frontend (React) fetches this data via an API call to.
+
+Project Structure:
+=================
+Capstone/
+│
+├── Backend/
+│   ├── src/
+│   │   ├── main/
+│   │   │   ├── index.js              → Main server entry point
+│   │   │   ├── models/
+│   │   │   │   └── Feature.js        → Mongoose schema for features
+│   │   │   ├── routes/
+│   │   │   │   ├── featureRoutes.js  → All /features API routes
+│   │   │   │   ├── healthRoutes.js   → Health check routes
+│   │   │   │   └── metricsRoutes.js  → (Optional) Metrics data
+│   │   │   ├── config.js             → MongoDB config and environment setup
+│   │   │   ├── auth.js               → Auth middleware (future use)
+│   │   │   └── logger.js             → Logging system
+│   ├── package.json
+│   └── .env
+│
+└── Frontend/
+    ├── src/
+    │   ├── App.js                    → React UI logic
+    │   ├── App.css                   → Dashboard styling
+    │   ├── index.js                  → React entry point
+    │   └── components/               → (optional future modularization)
+    ├── public/
+    ├── package.json
+    └── .env
+
+API Endpoints
+============
+
+GET /features
+-------------
+
+Fetches all stored features.
+
+Request Example:
+
+GET http://localhost:3000/features?entityId=user1&set=user_profile_rolling
+
+
+Response Example:
+
+{
+  "entityId": "user1",
+  "set": "user_profile_rolling",
+  "features": [
+    { "name": "rolling_avg_amount", "value": 300, "timestamp": "2025-11-06T05:16:31.126Z" },
+    { "name": "txn_count_7d", "value": 15, "timestamp": "2025-11-06T05:16:31.126Z" }
+  ]
+}
+
+POST /features
+==============
+
+Adds a new feature into MongoDB.
+
+Request Example:
+
+{
+  "name": "average_order_value",
+  "value": 2450
+}
+
+
+Response Example:
+
+{
+  "message": "Feature added successfully",
+  "feature": {
+    "_id": "6737c5d3e41234ab...",
+    "name": "average_order_value",
+    "value": 2450,
+    "timestamp": "2025-11-06T07:40:22.000Z",
+    "__v": 0
+  }
+}
+
+Installation Guide
+==================
+1️) Clone the repository
+git clone https://github.com/your-username/dynamic-feature-store.git
+cd dynamic-feature-store
+
+2) Install dependencies
+
+   Backend:
+      cd Backend
+      npm install
+   
+   Frontend:
+      cd ../Fronten
+      npm install
+
+3) Run the backend
+     cd Backend
+     npm run dev
+
+     Output:
+     Connected to Mongo
+     Feature Store API running on port 3000
+
+4) Run the frontend
+     cd Frontend
+     npm start
+
+     Output:
+     The dashboard will open at:
+     http://localhost:3001
+
+5) Database Setup
+     MongoDB URL (default)
+     mongodb://localhost:27017/featurestore
+
+Learning Outcomes
+================
++ Understood Feature Store Concepts – Learned how real-time ML features are stored, updated, and served.
++ Backend Development (Node.js + Express) – Built RESTful APIs and handled routing, requests, and middleware.
++ MongoDB Integration – Designed schemas using Mongoose and performed CRUD operations.
++ Frontend Development (React.js) – Created a dynamic dashboard to display real-time features.
++ API Communication – Connected frontend and backend using Axios with CORS handling.
++ Postman & Testing – Tested API endpoints and verified responses effectively.
++ Error Handling & Debugging – Fixed routing, import, and module errors using console logs and tools.
++ Real-Time Data Flow Understanding – Understood Kafka → Redis → Mongo → React pipeline.
