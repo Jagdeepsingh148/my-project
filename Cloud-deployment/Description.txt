@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Experiment Title:
 ================
 Implementing Continuous Integration and Deployment (CI/CD) for a React App using Docker and GitHub Actions
@@ -25,3 +26,32 @@ Learning Outcomes:
 - Gained experience in using GitHub Secrets for secure authentication.
 - Learned how to build and push Docker images automatically to Docker Hub.
 - Developed practical knowledge of modern DevOps workflows for frontend deployment.
+=======
+Experiment Title:
+================
+Implementing Continuous Integration and Deployment (CI/CD) for a React App using Docker and GitHub Actions
+
+Objective:
+===========
+To automate the process of building, testing, and deploying a React application using Docker containers integrated with GitHub Actions.
+
+Description:
+===========
+In this experiment, a React project was containerized using Docker and integrated with GitHub for continuous integration and deployment (CI/CD). A Dockerfile was created to define the build environment for the React app, and a GitHub Actions workflow (main.yml) was configured to automatically build and push the Docker image to Docker Hub whenever new changes were pushed to the repository.
+The workflow included the following stages:
+
+- Checkout Code – Retrieves the source code from the GitHub repository.
+- Set Up Node Environment – Installs Node.js and dependencies using npm install.
+- Build the React App – Builds the production version of the React project.
+- Docker Build and Push – Logs in to Docker Hub using GitHub Secrets and pushes the Docker image to the user’s repository.
+
+GitHub Secrets were used to securely store credentials like the Docker Hub username and personal access token (PAT), ensuring security and automation. Once the pipeline was triggered, it automatically built and deployed the application image on Docker Hub without manual intervention.
+
+Learning Outcomes:
+==================
+- Understood how to create a Dockerfile for a React project.
+- Learned how to configure GitHub Actions for CI/CD automation.
+- Gained experience in using GitHub Secrets for secure authentication.
+- Learned how to build and push Docker images automatically to Docker Hub.
+- Developed practical knowledge of modern DevOps workflows for frontend deployment.
+>>>>>>> ebdafcfaa5d87f9ffdce9d75422c1ba68c062815
